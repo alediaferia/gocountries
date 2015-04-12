@@ -23,3 +23,20 @@ func TestCountriesByName(t *testing.T) {
   log.Printf("Fetched: %v", (*countries)[0])
 }
 
+func TestCountriesByCapital(t *testing.T) {
+  capital := "tallinn"
+  countries, err := CountriesByCapital(capital)
+  if err != nil {
+    t.Errorf("Got unexpected error for CountriesByCapital(\"%s\"): %v", capital, err)
+    return
+  }
+
+  country := (*countries)[0]
+
+  if country.Name != "Estonia" {
+    t.Errorf("Got unexpected country: expected '%s', got '%s' instead", "Estonia", country.Name)
+  }
+
+  log.Printf("Fetched: %v", country)
+}
+
