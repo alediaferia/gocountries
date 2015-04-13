@@ -1,5 +1,5 @@
 # Gocountry
-This is a [Go](golang.org) wrapper library around the API provided by [Restcountries](restcountries.eu).
+This is a [Go](golang.org) wrapper library around the API provided by [Restcountries](https://restcountries.eu).
 
 ## Installation
 Just go with
