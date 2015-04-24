@@ -6,7 +6,6 @@ import (
   "net/http"
   "io/ioutil"
   "encoding/json"
-  "log"
 )
 
 const baseURL = "https://restcountries.eu/rest/v1/%s"
@@ -35,28 +34,49 @@ type Country struct {
   Languages      []string
 }
 
-func CountriesByName(name string) (*[]Country, error) {
-  url := fmt.Sprintf(baseURL, fmt.Sprintf("name/%s", name))
-  log.Printf("GET %s", url)
+func doRestcountriesCall(apiSuffix string) ([]byte, error) {
+  url := fmt.Sprintf(baseURL, apiSuffix)
   res, err := http.Get(url)
   if err != nil {
-    return nil, err
+    return []byte{}, err
   }
-  defer res.Body.Close() // So we don't forget about it later
+  defer res.Body.Close()
   if res.StatusCode != 200 {
     e := errors.New(fmt.Sprintf("Unexpected API status code %s", res.Status))
-    return nil, e
+    return []byte{}, e
   }
   body, err := ioutil.ReadAll(res.Body)
   if err != nil {
-    return nil, err
+    return []byte{}, err
   }
+  return body, nil
+}
 
-  var c []Country
-  err = json.Unmarshal(body, &c)
+func CountriesByName(name string) ([]Country, error) {
+  resData, err := doRestcountriesCall(fmt.Sprintf("name/%s", name))
+
   if err != nil {
     return nil, err
   }
-  return &c, nil
+  var c []Country
+  err = json.Unmarshal(resData, &c)
+  if err != nil {
+    return nil, err
+  }
+  return c, nil
+}
+
+func CountriesByCapital(name string) ([]Country, error) {
+  resData, err := doRestcountriesCall(fmt.Sprintf("capital/%s", name))
+
+  if err != nil {
+    return nil, err
+  }
+  var c []Country
+  err = json.Unmarshal(resData, &c)
+  if err != nil {
+    return nil, err
+  }
+  return c, nil
 }
 
