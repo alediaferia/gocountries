@@ -52,7 +52,7 @@ func doRestcountriesCall(apiSuffix string) ([]byte, error) {
   return body, nil
 }
 
-func CountriesByName(name string) (*[]Country, error) {
+func CountriesByName(name string) ([]Country, error) {
   resData, err := doRestcountriesCall(fmt.Sprintf("name/%s", name))
 
   if err != nil {
@@ -63,10 +63,10 @@ func CountriesByName(name string) (*[]Country, error) {
   if err != nil {
     return nil, err
   }
-  return &c, nil
+  return c, nil
 }
 
-func CountriesByCapital(name string) (*[]Country, error) {
+func CountriesByCapital(name string) ([]Country, error) {
   resData, err := doRestcountriesCall(fmt.Sprintf("capital/%s", name))
 
   if err != nil {
@@ -77,6 +77,6 @@ func CountriesByCapital(name string) (*[]Country, error) {
   if err != nil {
     return nil, err
   }
-  return &c, nil
+  return c, nil
 }
 
