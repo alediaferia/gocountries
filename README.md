@@ -8,7 +8,7 @@ Just go with
 
 ## Usage
 
-```golang
+```go
 import (
   "github.com/alediaferia/gocountries"
   "fmt"
