@@ -7,7 +7,7 @@ This is a [Go](https://golang.org) wrapper library around the API provided by
 
 Just go with
 
-```bash
+```shell
 go get github.com/alediaferia/gocountries
 ```
 
