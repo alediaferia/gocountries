@@ -41,10 +41,10 @@ The following branches are currently active:
 * ``master``: this is the stable branch which reflects the latest release
 * ``develop``: this is where the magic happens :)
 
-Additionally, I'd suggest you to create a hotfix/<word> branch
-when contributing to this repo. Anyway, anything you like is fine,
-just try to be as descriptive as possible when choosing your branch names
-so that everything remains as readable as possible.
+Additionally, I'd suggest you to create a hotfix/<word> branch when contributing
+to this repo. Anyway, anything you like is fine, just try to be as descriptive
+as possible when choosing your branch names so that everything remains as
+readable as possible.
 
 Thank you for your contributions in advance.
 
