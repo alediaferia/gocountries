@@ -1,28 +1,39 @@
 # Gocountry
-This is a [Go](https://golang.org) wrapper library around the API provided by [Restcountries](https://restcountries.eu).
+
+This is a [Go](https://golang.org) wrapper library around the API provided by
+[Restcountries](https://restcountries.eu).
 
 ## Installation
+
 Just go with
 
-`go get github.com/alediaferia/gocountries`
+```bash
+go get github.com/alediaferia/gocountries
+```
 
-## Usage
+## Example Usage
 
 ```go
+package main
+
 import (
-  "github.com/alediaferia/gocountries"
-  "fmt"
+    "fmt"
+    "github.com/alediaferia/gocountries"
 )
 
-var countries *[]Country
-countries, err = CountriesByName("italy")
-if err == nil {
-  c = (*countries)[0]
-  fmt.Printf("The capital of Italy is %s", c.Capital)
+func main() {
+    countries, err := gocountries.CountriesByName("italy")
+
+    if err == nil {
+        country := (countries)[0]
+        fmt.Println(fmt.Sprintf("The capital of Italy is %s", country.Capital))
+    }
 }
+
 ```
 
 ## Contribution
+
 Please, feel free to contribute to this project.
 
 The following branches are currently active:
@@ -38,4 +49,5 @@ so that everything remains as readable as possible.
 Thank you for your contributions in advance.
 
 ## License
+
 This library is provided with a MIT License.
