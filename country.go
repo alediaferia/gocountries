@@ -30,8 +30,8 @@ type Country struct {
   TopLevelDomain []string
   Alpha2Code     string
   Alpha3Code     string
-  Currencies     []string
-  Languages      []string
+  Currencies     []map[string]string
+  Languages      []map[string]string
 }
 
 func doRestcountriesCall(apiSuffix string) ([]byte, error) {
