@@ -41,7 +41,7 @@ func doRestcountriesCall(apiSuffix string) ([]byte, error) {
     return []byte{}, err
   }
   defer res.Body.Close()
-  if res.StatusCode != 200 {
+  if res.StatusCode != http.StatusOK {
     e := errors.New(fmt.Sprintf("Unexpected API status code %s", res.Status))
     return []byte{}, e
   }
