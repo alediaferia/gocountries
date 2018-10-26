@@ -20,6 +20,10 @@ func TestCountriesByName(t *testing.T) {
 		t.Errorf("Unexpected capital for country 'italy'")
 	}
 
+	if (countries)[0].RegionalBlocs[0].Acronym != "EU" {
+		t.Errorf("Unexpected regional block acronym for country 'italy'")
+	}
+
 	log.Printf("Fetched: %v", (countries)[0])
 }
 
