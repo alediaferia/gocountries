@@ -94,3 +94,18 @@ func CountriesByCapital(name string) ([]Country, error) {
 	}
 	return c, nil
 }
+
+// AllCountries retrieves every country
+func AllCountries() ([]Country, error) {
+	resData, err := doRestcountriesCall(fmt.Sprintf("all"))
+
+	if err != nil {
+		return nil, err
+	}
+	var c []Country
+	err = json.Unmarshal(resData, &c)
+	if err != nil {
+		return nil, err
+	}
+	return c, nil
+}

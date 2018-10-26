@@ -43,3 +43,21 @@ func TestCountriesByCapital(t *testing.T) {
 
 	log.Printf("Fetched: %v", country)
 }
+
+func TestAllCountries(t *testing.T) {
+	countries, err := AllCountries()
+	if err != nil {
+		t.Errorf("Got unexpected error for GetAllCountries(): %v", err)
+		return
+	}
+
+	if len(countries) < 1 {
+		t.Errorf("Unexpected: couldn't find any country at all")
+	}
+
+	if countries[0].Name == "" {
+		t.Errorf("Unexpected: invalid country model in GetAllCountries")
+	}
+
+	log.Printf("Fetched %d countries", len(countries))
+}
