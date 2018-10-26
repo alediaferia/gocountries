@@ -34,17 +34,17 @@ type Country struct {
 	Currencies     []map[string]string
 	Languages      []map[string]string
 	NumericCode    string
-	Flag		   string
+	Flag           string
 	RegionalBlocs  []RegionalBloc
-	Cioc		   string
+	Cioc           string
 }
 
 // RegionalBloc model
 type RegionalBloc struct {
-	Acronym			string
-	Name			string
-	OtherAcronyms	[]string
-	OtherNames		[]string
+	Acronym       string
+	Name          string
+	OtherAcronyms []string
+	OtherNames    []string
 }
 
 func doRestcountriesCall(apiSuffix string) ([]byte, error) {
