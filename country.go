@@ -8,8 +8,9 @@ import (
 	"net/http"
 )
 
-const baseURL = "https://restcountries.eu/rest/v1/%s"
+const baseURL = "https://restcountries.eu/rest/v2/%s"
 
+// Country model
 type Country struct {
 	Name           string
 	Capital        string
@@ -30,8 +31,20 @@ type Country struct {
 	TopLevelDomain []string
 	Alpha2Code     string
 	Alpha3Code     string
-	Currencies     []string
-	Languages      []string
+	Currencies     []map[string]string
+	Languages      []map[string]string
+	NumericCode    string
+	Flag		   string
+	RegionalBlocs  []RegionalBloc
+	Cioc		   string
+}
+
+// RegionalBloc model
+type RegionalBloc struct {
+	Acronym			string
+	Name			string
+	OtherAcronyms	[]string
+	OtherNames		[]string
 }
 
 func doRestcountriesCall(apiSuffix string) ([]byte, error) {
@@ -52,6 +65,7 @@ func doRestcountriesCall(apiSuffix string) ([]byte, error) {
 	return body, nil
 }
 
+// CountriesByName searches for countries by their name. It can be the native name or partial name
 func CountriesByName(name string) ([]Country, error) {
 	resData, err := doRestcountriesCall(fmt.Sprintf("name/%s", name))
 
@@ -66,6 +80,7 @@ func CountriesByName(name string) ([]Country, error) {
 	return c, nil
 }
 
+// CountriesByCapital searches for countries with capital city matching 'name'
 func CountriesByCapital(name string) ([]Country, error) {
 	resData, err := doRestcountriesCall(fmt.Sprintf("capital/%s", name))
 
